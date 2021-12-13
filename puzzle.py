@@ -1,6 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import time
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLCDNumber
 
 class Widget(QWidget):
@@ -28,55 +29,64 @@ class Widget(QWidget):
         self.btn1.setObjectName('btn1')
         self.btn1.setText('1')
         self.btn1.setGeometry(20, 20, 80, 80)
-        self.btn1.setStyleSheet("background-color: black")
+        self.btn1.setFont(QFont("Arial", 12, 1000))
+        self.btn1.setStyleSheet("background-color: black; color: white;")
 
         self.btn2 = QPushButton(self)
         self.btn2.setObjectName("btn2")
         self.btn2.setText('2')
         self.btn2.setGeometry(120, 20, 80, 80)
-        self.btn2.setStyleSheet("background-color: black")
+        self.btn2.setFont(QFont("Arial", 12, 1000))
+        self.btn2.setStyleSheet("background-color: black; color: white;")
 
         self.btn3 = QPushButton(self)
         self.btn3.setObjectName("btn3")
         self.btn3.setText('3')
         self.btn3.setGeometry(220, 20, 80, 80)
-        self.btn3.setStyleSheet("background-color: black")
+        self.btn3.setFont(QFont("Arial", 12, 1000))
+        self.btn3.setStyleSheet("background-color: black; color: white;")
 
         self.btn4 = QPushButton(self)
         self.btn4.setObjectName("btn4")
         self.btn4.setText('4')
         self.btn4.setGeometry(20, 120, 80, 80)
-        self.btn4.setStyleSheet("background-color: black")
+        self.btn4.setFont(QFont("Arial", 12, 1000))
+        self.btn4.setStyleSheet("background-color: black; color: white;")
 
         self.btn5 = QPushButton(self)
         self.btn5.setObjectName("btn5")
         self.btn5.setText('5')
         self.btn5.setGeometry(120, 120, 80, 80)
-        self.btn5.setStyleSheet("background-color: black")
+        self.btn5.setFont(QFont("Arial", 12, 1000))
+        self.btn5.setStyleSheet("background-color: black; color: white;")
 
         self.btn6 = QPushButton(self)
         self.btn6.setObjectName("btn6")
         self.btn6.setText('6')
         self.btn6.setGeometry(220, 120, 80, 80)
-        self.btn6.setStyleSheet("background-color: black")
+        self.btn6.setFont(QFont("Arial", 12, 1000))
+        self.btn6.setStyleSheet("background-color: black; color: white;")
 
         self.btn7 = QPushButton(self)
         self.btn7.setObjectName("btn7")
         self.btn7.setText('7')
         self.btn7.setGeometry(20, 220, 80, 80)
-        self.btn7.setStyleSheet("background-color: black")
+        self.btn7.setFont(QFont("Arial", 12, 1000))
+        self.btn7.setStyleSheet("background-color: black; color: white;")
 
         self.btn8 = QPushButton(self)
         self.btn8.setObjectName("btn8")
         self.btn8.setText('8')
         self.btn8.setGeometry(120, 220, 80, 80)
-        self.btn8.setStyleSheet("background-color: black")
+        self.btn8.setFont(QFont("Arial", 12, 1000))
+        self.btn8.setStyleSheet("background-color: black; color: white;")
 
         self.btn9 = QPushButton(self)
         self.btn9.setObjectName("btn9")
         self.btn9.setText('9')
         self.btn9.setGeometry(220, 220, 80, 80)
-        self.btn9.setStyleSheet("background-color: black")
+        self.btn9.setFont(QFont("Arial", 12, 1000))
+        self.btn9.setStyleSheet("background-color: black; color: white;")
 
     def linkClicks(self):
         self.btn1.clicked.connect(self.btn1Click)
@@ -134,12 +144,12 @@ class Widget(QWidget):
         self.lcdNumber.display(self.i)
 
     def checkStyleSheet(self, strStyle):
-        if (self.strStyle.styleSheet()) == "background-color: black":
-            self.strStyle.setStyleSheet("background-color: white")
-        elif (self.strStyle.styleSheet()) == "background-color: white":
-            self.strStyle.setStyleSheet("background-color: red")
+        if (self.strStyle.styleSheet()) == "background-color: black; color: white;":
+            self.strStyle.setStyleSheet("background-color: white; color: red;")
+        elif (self.strStyle.styleSheet()) == "background-color: white; color: red;":
+            self.strStyle.setStyleSheet("background-color: red; color: black;")
         else:
-            self.strStyle.setStyleSheet("background-color: black")
+            self.strStyle.setStyleSheet("background-color: black; color: white;")
 
     def btn1Click(self):
         self.clickCount()
