@@ -2,7 +2,7 @@
 import sys
 import time
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLCDNumber
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QLCDNumber
 
 class Widget(QWidget):
     def __init__(self):
@@ -14,10 +14,18 @@ class Widget(QWidget):
         self.startTime = time.time()
 
         self.carregarLCD()
+        self.carrgarLable()
         self.carregarBtns()
         self.linkClicks()
 
         self.timeCount()
+
+    def carrgarLable(self):
+        self.lblTentativas = QLabel(self)
+        self.lblTentativas.setObjectName('lblTentativas')
+        self.lblTentativas.setText('Tentativas:')
+        self.lblTentativas.setGeometry(20, 340, 150, 50)
+        self.lblTentativas.setFont(QFont("Arial", 18, 1000))
 
     def carregarLCD(self):
         self.lcdNumber = QLCDNumber(self)
@@ -31,6 +39,7 @@ class Widget(QWidget):
         self.btn1.setGeometry(20, 20, 80, 80)
         self.btn1.setFont(QFont("Arial", 12, 1000))
         self.btn1.setStyleSheet("background-color: black; color: white;")
+        self.btn1.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn2 = QPushButton(self)
         self.btn2.setObjectName("btn2")
@@ -38,6 +47,7 @@ class Widget(QWidget):
         self.btn2.setGeometry(120, 20, 80, 80)
         self.btn2.setFont(QFont("Arial", 12, 1000))
         self.btn2.setStyleSheet("background-color: black; color: white;")
+        self.btn2.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn3 = QPushButton(self)
         self.btn3.setObjectName("btn3")
@@ -45,6 +55,7 @@ class Widget(QWidget):
         self.btn3.setGeometry(220, 20, 80, 80)
         self.btn3.setFont(QFont("Arial", 12, 1000))
         self.btn3.setStyleSheet("background-color: black; color: white;")
+        self.btn3.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn4 = QPushButton(self)
         self.btn4.setObjectName("btn4")
@@ -52,6 +63,7 @@ class Widget(QWidget):
         self.btn4.setGeometry(20, 120, 80, 80)
         self.btn4.setFont(QFont("Arial", 12, 1000))
         self.btn4.setStyleSheet("background-color: black; color: white;")
+        self.btn4.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn5 = QPushButton(self)
         self.btn5.setObjectName("btn5")
@@ -59,6 +71,7 @@ class Widget(QWidget):
         self.btn5.setGeometry(120, 120, 80, 80)
         self.btn5.setFont(QFont("Arial", 12, 1000))
         self.btn5.setStyleSheet("background-color: black; color: white;")
+        self.btn5.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn6 = QPushButton(self)
         self.btn6.setObjectName("btn6")
@@ -66,6 +79,7 @@ class Widget(QWidget):
         self.btn6.setGeometry(220, 120, 80, 80)
         self.btn6.setFont(QFont("Arial", 12, 1000))
         self.btn6.setStyleSheet("background-color: black; color: white;")
+        self.btn6.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn7 = QPushButton(self)
         self.btn7.setObjectName("btn7")
@@ -73,6 +87,7 @@ class Widget(QWidget):
         self.btn7.setGeometry(20, 220, 80, 80)
         self.btn7.setFont(QFont("Arial", 12, 1000))
         self.btn7.setStyleSheet("background-color: black; color: white;")
+        self.btn7.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn8 = QPushButton(self)
         self.btn8.setObjectName("btn8")
@@ -80,6 +95,7 @@ class Widget(QWidget):
         self.btn8.setGeometry(120, 220, 80, 80)
         self.btn8.setFont(QFont("Arial", 12, 1000))
         self.btn8.setStyleSheet("background-color: black; color: white;")
+        self.btn8.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
         self.btn9 = QPushButton(self)
         self.btn9.setObjectName("btn9")
@@ -87,6 +103,7 @@ class Widget(QWidget):
         self.btn9.setGeometry(220, 220, 80, 80)
         self.btn9.setFont(QFont("Arial", 12, 1000))
         self.btn9.setStyleSheet("background-color: black; color: white;")
+        self.btn9.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
     def linkClicks(self):
         self.btn1.clicked.connect(self.btn1Click)
@@ -104,31 +121,31 @@ class Widget(QWidget):
             print("Completo em {} segundos, em {} tentativas".format(int(self.tempo), self.i))
 
     def chkFullRed(self):
-        if self.btn1.styleSheet() != "background-color: red":
+        if self.btn1.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn2.styleSheet() != "background-color: red":
+        if self.btn2.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn3.styleSheet() != "background-color: red":
+        if self.btn3.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn4.styleSheet() != "background-color: red":
+        if self.btn4.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn5.styleSheet() != "background-color: red":
+        if self.btn5.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn6.styleSheet() != "background-color: red":
+        if self.btn6.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn7.styleSheet() != "background-color: red":
+        if self.btn7.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn8.styleSheet() != "background-color: red":
+        if self.btn8.styleSheet() != "background-color: red; color: black;":
             return False
 
-        if self.btn9.styleSheet() != "background-color: red":
+        if self.btn9.styleSheet() != "background-color: red; color: black;":
             return False
 
         return True
@@ -146,10 +163,13 @@ class Widget(QWidget):
     def checkStyleSheet(self, strStyle):
         if (self.strStyle.styleSheet()) == "background-color: black; color: white;":
             self.strStyle.setStyleSheet("background-color: white; color: red;")
+            self.strStyle.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Vermelho</font></body></html>')
         elif (self.strStyle.styleSheet()) == "background-color: white; color: red;":
             self.strStyle.setStyleSheet("background-color: red; color: black;")
+            self.strStyle.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Preto</font></body></html>')
         else:
             self.strStyle.setStyleSheet("background-color: black; color: white;")
+            self.strStyle.setToolTip('<html><head></head><body><font color = black>Proxima cor será: Branco</font>></body></html>')
 
     def btn1Click(self):
         self.clickCount()
