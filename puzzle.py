@@ -8,11 +8,34 @@ from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QLCDNumb
 class Puzzle3x33(QWidget):
     def __init__(self):
         QWidget.__init__(self)
-        self.resize(320, 400)
-        self.setWindowTitle("Puzzle 3x3 com 3 cores")
 
         self.i = 0
         self.startTime = time.time()
+
+        #Dimenções dos Btns
+        self.tam = 80 + aumentarUI()
+        self.x1 = 20 
+        self.x2 = 120 + aumentarUI()
+        self.x3 = 220 + (aumentarUI() * 2)
+        self.y1 = 20 
+        self.y2 = 120 + aumentarUI()
+        self.y3 = 220 + (aumentarUI() * 2)
+
+        #Dimenções da Label
+        self.lbly = 330 + (aumentarUI() * 3)
+        self.lblh = 200 + aumentarUI()
+        self.lblw = 80 + aumentarUI()
+
+        #Dimenções do LCD
+        self.lcdx = 150 + (aumentarUI() * 2)
+        self.lcdy = 320 + (aumentarUI() * 3)
+        self.lcdh = 150 + aumentarUI()
+        self.lcdw = 60 + aumentarUI()
+
+        self.h = 320 + (aumentarUI() * 3)
+        self.w = 400 + (aumentarUI() * 4)
+        self.resize(self.h, self.w)
+        self.setWindowTitle("Puzzle 3x3 com 3 cores")
 
         self.carregarLCD()
         self.carregarBtns()
@@ -26,19 +49,19 @@ class Puzzle3x33(QWidget):
         self.lblTentativas.setObjectName('lblTentativas')
         self.lblTentativas.setObjectName('btn1')
         self.lblTentativas.setText('Tentativas')
-        self.lblTentativas.setGeometry(20, 290, 200, 80)
+        self.lblTentativas.setGeometry(20, self.lbly, self.lblh, self.lblw)
         self.lblTentativas.setFont(QFont("Arial", 16, 1000))
 
     def carregarLCD(self):
         self.lcdNumber = QLCDNumber(self)
         self.lcdNumber.setObjectName('lcdNumber')
-        self.lcdNumber.setGeometry(150, 320, 150, 60)
+        self.lcdNumber.setGeometry(self.lcdx, self.lcdy, self.lcdh, self.lcdw)
 
     def carregarBtns(self):
         self.btn1 = QPushButton(self)
         self.btn1.setObjectName('btn1')
         self.btn1.setText('1')
-        self.btn1.setGeometry(20, 20, 80, 80)
+        self.btn1.setGeometry(self.x1, self.y1, self.tam, self.tam)
         self.btn1.setFont(QFont("Arial", 12, 1000))
         self.btn1.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn1.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -47,7 +70,7 @@ class Puzzle3x33(QWidget):
         self.btn2 = QPushButton(self)
         self.btn2.setObjectName("btn2")
         self.btn2.setText('2')
-        self.btn2.setGeometry(120, 20, 80, 80)
+        self.btn2.setGeometry(self.x2, self.y1, self.tam, self.tam)
         self.btn2.setFont(QFont("Arial", 12, 1000))
         self.btn2.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn2.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -56,7 +79,7 @@ class Puzzle3x33(QWidget):
         self.btn3 = QPushButton(self)
         self.btn3.setObjectName("btn3")
         self.btn3.setText('3')
-        self.btn3.setGeometry(220, 20, 80, 80)
+        self.btn3.setGeometry(self.x3, self.y1, self.tam, self.tam)
         self.btn3.setFont(QFont("Arial", 12, 1000))
         self.btn3.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn3.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -65,7 +88,7 @@ class Puzzle3x33(QWidget):
         self.btn4 = QPushButton(self)
         self.btn4.setObjectName("btn4")
         self.btn4.setText('4')
-        self.btn4.setGeometry(20, 120, 80, 80)
+        self.btn4.setGeometry(self.x1, self.y2, self.tam, self.tam)
         self.btn4.setFont(QFont("Arial", 12, 1000))
         self.btn4.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn4.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -74,7 +97,7 @@ class Puzzle3x33(QWidget):
         self.btn5 = QPushButton(self)
         self.btn5.setObjectName("btn5")
         self.btn5.setText('5')
-        self.btn5.setGeometry(120, 120, 80, 80)
+        self.btn5.setGeometry(self.x2, self.y2, self.tam, self.tam)
         self.btn5.setFont(QFont("Arial", 12, 1000))
         self.btn5.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn5.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -83,7 +106,7 @@ class Puzzle3x33(QWidget):
         self.btn6 = QPushButton(self)
         self.btn6.setObjectName("btn6")
         self.btn6.setText('6')
-        self.btn6.setGeometry(220, 120, 80, 80)
+        self.btn6.setGeometry(self.x3, self.y2, self.tam, self.tam)
         self.btn6.setFont(QFont("Arial", 12, 1000))
         self.btn6.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn6.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -92,7 +115,7 @@ class Puzzle3x33(QWidget):
         self.btn7 = QPushButton(self)
         self.btn7.setObjectName("btn7")
         self.btn7.setText('7')
-        self.btn7.setGeometry(20, 220, 80, 80)
+        self.btn7.setGeometry(self.x1, self.y3, self.tam, self.tam)
         self.btn7.setFont(QFont("Arial", 12, 1000))
         self.btn7.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn7.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -101,7 +124,7 @@ class Puzzle3x33(QWidget):
         self.btn8 = QPushButton(self)
         self.btn8.setObjectName("btn8")
         self.btn8.setText('8')
-        self.btn8.setGeometry(120, 220, 80, 80)
+        self.btn8.setGeometry(self.x2, self.y3, self.tam, self.tam)
         self.btn8.setFont(QFont("Arial", 12, 1000))
         self.btn8.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn8.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -110,7 +133,7 @@ class Puzzle3x33(QWidget):
         self.btn9 = QPushButton(self)
         self.btn9.setObjectName("btn9")
         self.btn9.setText('9')
-        self.btn9.setGeometry(220, 220, 80, 80)
+        self.btn9.setGeometry(self.x3, self.y3, self.tam, self.tam)
         self.btn9.setFont(QFont("Arial", 12, 1000))
         self.btn9.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn9.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -167,8 +190,6 @@ class Puzzle3x33(QWidget):
 
     def timeCount(self):
         self.tempo = time.time() - self.startTime
-        if self.tempo > 1:
-            print(str(int(self.tempo)))
 
     def clickCount(self):
         self.timeCount()
@@ -334,11 +355,34 @@ class Puzzle3x33(QWidget):
 class Puzzle3x34(QWidget):
     def __init__(self):
         QWidget.__init__(self)
-        self.resize(320, 400)
-        self.setWindowTitle("Puzzle 3x3 com 4 cores")
 
         self.i = 0
         self.startTime = time.time()
+
+        #Dimenções dos Btns
+        self.tam = 80 + aumentarUI()
+        self.x1 = 20 
+        self.x2 = 120 + aumentarUI()
+        self.x3 = 220 + (aumentarUI() * 2)
+        self.y1 = 20 
+        self.y2 = 120 + aumentarUI()
+        self.y3 = 220 + (aumentarUI() * 2)
+
+        #Dimenções da Label
+        self.lbly = 330 + (aumentarUI() * 3)
+        self.lblh = 200 + aumentarUI()
+        self.lblw = 80 + aumentarUI()
+
+        #Dimenções do LCD
+        self.lcdx = 150 + (aumentarUI() * 2)
+        self.lcdy = 320 + (aumentarUI() * 3)
+        self.lcdh = 150 + aumentarUI()
+        self.lcdw = 60 + aumentarUI()
+
+        self.h = 320 + (aumentarUI() * 3)
+        self.w = 400 + (aumentarUI() * 4)
+        self.resize(self.h, self.w)
+        self.setWindowTitle("Puzzle 3x3 com 3 cores")
 
         self.carregarLCD()
         self.carregarBtns()
@@ -352,19 +396,19 @@ class Puzzle3x34(QWidget):
         self.lblTentativas.setObjectName('lblTentativas')
         self.lblTentativas.setObjectName('btn1')
         self.lblTentativas.setText('Tentativas')
-        self.lblTentativas.setGeometry(20, 290, 200, 80)
+        self.lblTentativas.setGeometry(20, self.lbly, self.lblh, self.lblw)
         self.lblTentativas.setFont(QFont("Arial", 16, 1000))
 
     def carregarLCD(self):
         self.lcdNumber = QLCDNumber(self)
         self.lcdNumber.setObjectName('lcdNumber')
-        self.lcdNumber.setGeometry(150, 320, 150, 60)
+        self.lcdNumber.setGeometry(self.lcdx, self.lcdy, self.lcdh, self.lcdw)
 
     def carregarBtns(self):
         self.btn1 = QPushButton(self)
         self.btn1.setObjectName('btn1')
         self.btn1.setText('1')
-        self.btn1.setGeometry(20, 20, 80, 80)
+        self.btn1.setGeometry(self.x1, self.y1, self.tam, self.tam)
         self.btn1.setFont(QFont("Arial", 12, 1000))
         self.btn1.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn1.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -373,7 +417,7 @@ class Puzzle3x34(QWidget):
         self.btn2 = QPushButton(self)
         self.btn2.setObjectName("btn2")
         self.btn2.setText('2')
-        self.btn2.setGeometry(120, 20, 80, 80)
+        self.btn2.setGeometry(self.x2, self.y1, self.tam, self.tam)
         self.btn2.setFont(QFont("Arial", 12, 1000))
         self.btn2.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn2.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -382,7 +426,7 @@ class Puzzle3x34(QWidget):
         self.btn3 = QPushButton(self)
         self.btn3.setObjectName("btn3")
         self.btn3.setText('3')
-        self.btn3.setGeometry(220, 20, 80, 80)
+        self.btn3.setGeometry(self.x3, self.y1, self.tam, self.tam)
         self.btn3.setFont(QFont("Arial", 12, 1000))
         self.btn3.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn3.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -391,7 +435,7 @@ class Puzzle3x34(QWidget):
         self.btn4 = QPushButton(self)
         self.btn4.setObjectName("btn4")
         self.btn4.setText('4')
-        self.btn4.setGeometry(20, 120, 80, 80)
+        self.btn4.setGeometry(self.x1, self.y2, self.tam, self.tam)
         self.btn4.setFont(QFont("Arial", 12, 1000))
         self.btn4.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn4.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -400,7 +444,7 @@ class Puzzle3x34(QWidget):
         self.btn5 = QPushButton(self)
         self.btn5.setObjectName("btn5")
         self.btn5.setText('5')
-        self.btn5.setGeometry(120, 120, 80, 80)
+        self.btn5.setGeometry(self.x2, self.y2, self.tam, self.tam)
         self.btn5.setFont(QFont("Arial", 12, 1000))
         self.btn5.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn5.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -409,7 +453,7 @@ class Puzzle3x34(QWidget):
         self.btn6 = QPushButton(self)
         self.btn6.setObjectName("btn6")
         self.btn6.setText('6')
-        self.btn6.setGeometry(220, 120, 80, 80)
+        self.btn6.setGeometry(self.x3, self.y2, self.tam, self.tam)
         self.btn6.setFont(QFont("Arial", 12, 1000))
         self.btn6.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn6.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -418,7 +462,7 @@ class Puzzle3x34(QWidget):
         self.btn7 = QPushButton(self)
         self.btn7.setObjectName("btn7")
         self.btn7.setText('7')
-        self.btn7.setGeometry(20, 220, 80, 80)
+        self.btn7.setGeometry(self.x1, self.y3, self.tam, self.tam)
         self.btn7.setFont(QFont("Arial", 12, 1000))
         self.btn7.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn7.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -427,7 +471,7 @@ class Puzzle3x34(QWidget):
         self.btn8 = QPushButton(self)
         self.btn8.setObjectName("btn8")
         self.btn8.setText('8')
-        self.btn8.setGeometry(120, 220, 80, 80)
+        self.btn8.setGeometry(self.x2, self.y3, self.tam, self.tam)
         self.btn8.setFont(QFont("Arial", 12, 1000))
         self.btn8.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn8.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -436,7 +480,7 @@ class Puzzle3x34(QWidget):
         self.btn9 = QPushButton(self)
         self.btn9.setObjectName("btn9")
         self.btn9.setText('9')
-        self.btn9.setGeometry(220, 220, 80, 80)
+        self.btn9.setGeometry(self.x3, self.y3, self.tam, self.tam)
         self.btn9.setFont(QFont("Arial", 12, 1000))
         self.btn9.setStyleSheet("QPushButton {background-color : black; color: white}")
         self.btn9.setToolTip('<font color = black>Proxima cor será: Branco</font>')
@@ -488,13 +532,11 @@ class Puzzle3x34(QWidget):
 
         if self.btn9.styleSheet() != "QPushButton {background-color : green; color: black}":
             return False
-
+        
         return True
 
-    def timeCount(self):
+    def timeCount(self): 
         self.tempo = time.time() - self.startTime
-        if self.tempo > 1:
-            print(str(int(self.tempo)))
 
     def clickCount(self):
         self.timeCount()
@@ -697,13 +739,23 @@ class PuzzleSolved(QWidget):
 class Menu(QWidget):
     def __init__(self):
         QWidget.__init__(self)
-        self.resize(300, 120)
+
+        self.i = 0
+        self.startTime = time.time()
+
+        #Dimenções dos Btns
+        self.tam = 80 + aumentarUI()
+        self.x2 = 120 + aumentarUI()
+
+        self.h = 220 + (aumentarUI() * 2)
+        self.w = 120 + (aumentarUI())
+        self.resize(self.h, self.w)
         self.setWindowTitle("Menu dos Puzzle")
         
         self.btn3x33 = QPushButton(self)
         self.btn3x33.setObjectName('btn3x33')
         self.btn3x33.setText('3x3 lvl 3')
-        self.btn3x33.setGeometry(20, 20, 80, 80)
+        self.btn3x33.setGeometry(20, 20, self.tam, self.tam)
         self.btn3x33.setFont(QFont("Arial", 12, 1000))
         self.btn3x33.setStyleSheet("QPushButton::hover {background-color : red; color: black;}")
         self.btn3x33.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
@@ -712,7 +764,7 @@ class Menu(QWidget):
         self.btn3x34 = QPushButton(self)
         self.btn3x34.setObjectName('btn3x34')
         self.btn3x34.setText('3x3 lvl 4')
-        self.btn3x34.setGeometry(120, 20, 80, 80)
+        self.btn3x34.setGeometry(self.x2, 20, self.tam, self.tam)
         self.btn3x34.setFont(QFont("Arial", 12, 1000))
         self.btn3x34.setStyleSheet("QPushButton::hover {background-color : green; color: black;}")
         self.btn3x34.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
@@ -748,6 +800,10 @@ class Resultado(object):
     @tentativas.setter
     def tentativas(self, tentativas):
         self._tentativas = tentativas
+
+#Em desenvolvimento!
+def aumentarUI():
+    return 20
 
 if __name__ == "__main__":
     app = QApplication([])
